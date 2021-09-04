@@ -14,11 +14,12 @@ function calAvr(grades) {
 }
 
 function App() {
-  const [original_students,setOriginal_Students] = useState([])
-  const [render_students,setRender_Students] = useState([])
-  const [search_name,setSearch_name] = useState("")
-  const [search_tag,setSearch_tag] = useState("")
+  const [original_students,setOriginal_Students] = useState([])//store original student list fetch from API
+  const [render_students,setRender_Students] = useState([])//store rendered student list
+  const [search_name,setSearch_name] = useState("")//store search by name input
+  const [search_tag,setSearch_tag] = useState("")//store search by tag input
 
+  //fetch data
   useEffect(()=>{
     Axios.get("https://api.hatchways.io/assessment/students")
         .then(res=>{
@@ -27,6 +28,7 @@ function App() {
         })
   },[])
 
+  //search by name 
   useEffect(()=>{
     var result_list=[]
     if(search_name ==""){
