@@ -14,53 +14,32 @@ function calAvr(grades) {
 }
 
 function App() {
-  const [original_students,setOriginal_Students] = useState([])//store original student list fetch from API
-  const [render_students,setRender_Students] = useState([])//store rendered student list
-  const [search_name,setSearch_name] = useState("")//store search by name input
+  const [students,setStudents] = useState([])//store student list 
   const [search_tag,setSearch_tag] = useState("")//store search by tag input
+  const [search_name,setSearch_name] = useState("")//store search by tag input
 
   //fetch data
   useEffect(()=>{
     Axios.get("https://api.hatchways.io/assessment/students")
         .then(res=>{
-          setOriginal_Students(res.data.students)
-          setRender_Students(res.data.students)
+          setStudents(res.data.students)
         })
   },[])
 
-  //search by name 
-  useEffect(()=>{
-    var result_list=[]
-    if(search_name ==""){
-      setRender_Students(original_students)
-    }else{
-      for (var i =0;i<original_students.length;i++){
-        var full_name = original_students[i].firstName+" "+original_students[i].lastName
-        full_name = full_name.toLowerCase()
-        if(full_name.includes(search_name.toLowerCase())){
-          result_list.push(original_students[i])
-        }
-      }
-      setRender_Students(result_list)
-    }
-  },[search_name])
 
   return (
     <div className="out "> 
-          <div className="center">
-            <div className="w-full">
-              <div className="input-container">
-                <SearchByName setInput={setSearch_name}/>
-                <SearchByTag setInput={setSearch_tag}/>
-              </div>
-              
-              <div className="student-list-container" >
-                <StudentList original_students_list ={original_students} render_students_list = {render_students} calAvr={calAvr}/>
-              </div>
-            </div>
+      <div>
+      <div className="input-container w-full">
+        <SearchByName setInput={setSearch_name}/><br/>
+        <SearchByTag setInput={setSearch_tag}/>
+      </div>
+        <div className="center">
+          <div className="w-full">
+            <StudentList student_list ={students} calAvr={calAvr} search_tag = {search_tag} search_name = {search_name}/>
           </div>
-        
-      
+        </div>
+      </div>
     </div>
      
     
