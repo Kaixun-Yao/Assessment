@@ -20,7 +20,7 @@ body{
 .center{
   padding-top:10px;
   height: 70vh;
-  width:80vh;
+  width:1000px;
   display:flex;
   background-color: white;
   justify-content: center;
@@ -28,7 +28,7 @@ body{
   border-bottom-right-radius: 1rem;
   --tw-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-  overflow:auto;
+  overflow-y:auto;
   position: relative;
 }
 
@@ -38,7 +38,6 @@ body{
   margin-top:10px;
   width: 100%;
   padding-bottom:10px;
-  padding-left:20px;
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-color: rgb(221, 221, 221);
@@ -60,6 +59,7 @@ ul{
   border-style:solid;
   width:120px;
   height:120px;
+  margin-left: 20px;
   border-width: 1px;
   border-color: rgb(192, 185, 185);
   border-radius: 9999px;
@@ -73,7 +73,7 @@ ul{
   padding-left: 15px;
   padding-right: 15px;
   background-color: white;
-  width: 97%;
+  width: 970px;
 }
 
 .input-name{
